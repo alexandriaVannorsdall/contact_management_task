@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Contact Management System</title>
+</head>
+<body>
+
+<h2>Add Contact</h2>
+<form id="addContactForm">
+    Email Address: <label for="email"></label><input type="email" id="email" required><br>
+    Name: <label for="name"></label><input type="text" id="name" required><br>
+    <button type="submit">Add Contact</button>
+</form>
+
+<h2>Contacts List</h2>
+<div id="contactsList"></div>
+
+<script>
+    document.getElementById("addContactForm").onsubmit = function(event) {
+        event.preventDefault();
+        const email = document.getElementById("email").value;
+        const name = document.getElementById("name").value;
+
+        // TODO: Use AJAX to send data to PHP backend for adding the contact
+
+        // Clear the form inputs after submission
+        document.getElementById("email").value = '';
+        document.getElementById("name").value = '';
+    };
+
+    // TODO: Implement AJAX call to retrieve and display the list of contacts
+
+</script>
+
+</body>
+</html>
