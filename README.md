@@ -10,4 +10,4 @@ table with data.
 * Add an email address without reloading the page
 * Delete an email address without reloading the page
 
-The index.html file is a good start but I could not finish it in 2 hours. 
+The index.html file is a good start ,but I could not finish it in 2 hours. 

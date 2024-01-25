@@ -22,14 +22,46 @@
         const email = document.getElementById("email").value;
         const name = document.getElementById("name").value;
 
-        // TODO: Use AJAX to send data to PHP backend for adding the contact
+        // Use Fetch API to send data to PHP backend for adding the contact
+        fetch('contactManager.php', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({ email: email, name: name })
+        })
+            .then(response => response.json())
+            .then(data => {
+                console.log('Success:', data);
+                // Call function to refresh the contact list if needed
+                loadContacts();
+            })
+            .catch((error) => {
+                console.error('Error:', error);
+            });
 
         // Clear the form inputs after submission
         document.getElementById("email").value = '';
         document.getElementById("name").value = '';
     };
 
-    // TODO: Implement AJAX call to retrieve and display the list of contacts
+    function loadContacts() {
+        fetch('contactManager.php')
+            .then(response => response.json())
+            .then(contacts => {
+                const contactsList = document.getElementById('contactsList');
+                contactsList.innerHTML = ''; // Clear the current list
+                contacts.forEach(contact => {
+                    // Assuming each contact is an object with 'email' and 'name' properties
+                    contactsList.innerHTML += `<p>${contact.name} (${contact.email})</p>`;
+                });
+            })
+            .catch(error => {
+                console.error('Error loading contacts:', error);
+            });
+    }
+
+    loadContacts();
 
 </script>
 

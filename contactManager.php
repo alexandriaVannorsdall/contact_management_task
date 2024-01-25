@@ -32,7 +32,7 @@ function addEmailAddress($email, $name) {
 
     $result = $stmt->execute();
 
-    $stmt->close(); /
+    $stmt->close();
 
     if ($result) {
         return true;
